@@ -1,0 +1,289 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(248, 240, 240);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+
+/* ==========================************** Design Of Menu Bar in uiDesign.html ****************================ */
+
+nav {
+    background: linear-gradient(0.25turn,#ff5201,#f78324, #f17420, #f85408);
+    color: #fff;
+    border: 2px solid #f78324;
+    border-radius: 25px;
+    box-shadow: 5px 1px 10px 5px #cc4814;
+    font-family:'Bahnschrift';
+  }
+  
+  nav:after {
+    content: '';
+    clear: both;
+    display: table;
+  }
+  
+  nav .logo {
+    float: left;
+    color: #fff;
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 70px;
+    padding-left: 60px;
+  }
+  
+  nav ul {
+    float: right;
+    list-style: none;
+    margin-right: 40px;
+    position: relative;
+  }
+  
+  nav ul li {
+    /* float: left; */
+    display: inline-block;
+    margin: 0 25px;
+    border-radius: 15px;
+    /* background: linear-gradient(0.25turn,#fa5305,#e26c0c, #ee6307, #db5314); */
+  }
+  
+  nav ul li a{
+    color: #fff;
+    text-decoration: none;
+    line-height: 70px;
+    font-size: 18px;
+    padding: 8px 15px;
+  }
+  
+  nav ul li a:hover{
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    font-weight: bolder;
+    box-shadow: 0 0 10px #ffffff
+               ,0 0 10px #ffffff;
+    background: linear-gradient(0.25turn,#e4662b,#f58d38, #e78442, #ee7137);
+  }
+  
+  nav ul ul li a:hover{
+    color: rgb(24, 26, 26);
+  }
+  
+  nav ul ul {
+    position: absolute;
+    top: 90px;
+    border-top: 3px solid rgb(3, 3, 3);
+    width: 150px;
+    opacity: 0;
+    visibility: hidden;
+    transition: top 0.3s;
+  }
+  
+  nav ul ul ul {
+    border-top: none;
+  }
+  
+  nav ul li:hover > ul {
+    top: 70px;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  nav ul ul li {
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    margin: 0px;
+    width: 150px;
+    left: -40px;
+    float: none;
+    display: list-item;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+  }
+  
+  
+  nav ul ul li a{
+    line-height: 50px;
+  }
+  
+  nav ul ul li a span{
+    margin-left: 15px;
+  }
+  
+  nav ul ul ul li {
+    position: relative;
+    top: -70px;
+    left: 100px;
+  }
+
+
+  /* ==========================************** Design for container ****************================ */
+
+.boxContainer{
+  background-color: #ecd8ec;
+  box-shadow: 5px 1px 10px 5px #d1ccc9;
+  border-radius: 10px;
+  height: 70vh;
+  padding: 5px;
+  margin: 20px;
+  font-family:'Algerian';
+}
+
+.cleaning_data_div{
+  float: left;
+  margin-left: 100px;
+  margin-top: 20px;
+}
+
+
+.choose_csv{
+  font-size: 12px;
+  background: #ffffff;
+  border-radius: 25px;
+  box-shadow: 5px 5px 10px black;
+  width: 300px;
+  outline: none;
+  cursor:grab;
+}
+
+::-webkit-file-upload-button{
+  color: #ffffff;
+  background: #1356e8;
+  padding: 15px;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 5px 5px 10px rgb(0, 81, 128);
+  outline: none;
+}
+
+::-webkit-file-upload-button:hover{
+  background-color: #0d54a6;
+  color: black;
+}
+
+
+
+.btn{
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-family:Segoe UI Black;
+  font-weight:bold;
+  background:  #3e64ff;
+  box-shadow: 0 0 5px #3e64ff;
+  margin-left: 180px;
+  font-size: 14px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  box-shadow: 0 0 5px #337aff
+  ,0 0 5px #66a3ff;
+ background-color: #3e64ff;
+ color: #ffff;
+ font-weight: bolder;
+ transform:scale(1.05);
+}
+
+.btn:active{
+  transform:scale(1.1);
+}
+
+
+input[type=text],input[type=number]{
+  width: 300px;
+  padding: 10px;  
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 20px;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+
+label {
+  letter-spacing: 1px;
+  font-size: 16px;
+  color: #000000;
+  transition: 0.5s;
+}
+
+.graph{
+  float: right;
+  margin: 20px;
+  height: 500px;
+  width: 800px;
+}
+
+.chartBox {
+  width:1000px;
+  margin-left: 10%;
+  position: relative;
+}
+
+.allbuttons {
+  align-items: center;
+  position: absolute;
+  margin-left: 15%;
+  margin-top: 10px;
+}
+
+
+.singlebtn{
+  display:flex;
+  float: left;  
+}
+
+.singlebtn button{  
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-family:'Times New Roman';
+  font-weight: bolder;
+  background:  #3e64ff;
+  box-shadow: 0 0 5px #3e64ff;
+  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.singlebtn button:hover{
+  box-shadow: 0 0 5px #337aff
+  ,0 0 5px #66a3ff;
+ background-color: #3e64ff;
+ color: #ffff;
+ font-weight: bolder;
+ transform:scale(1.05);
+}
+
+.singlebtn button:active{
+  transform:scale(1.08);
+}
+
+.loader{
+  width: 40px;
+  margin: 70px auto;
+}
+.box {
+  width: 15px;
+  height: 15px;
+  background-color: #66a3ff;
+  display: inline-block;
+  animation: pulse 0.6s ease-in infinite alternate;
+}
+
+.box2, .box3{
+  animation-delay: 0.6s;
+}
+@keyframes pulse{
+  100%{
+    opacity: 0;
+  }
+}

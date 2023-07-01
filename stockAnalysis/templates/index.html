@@ -1,0 +1,41 @@
+{% load static %}
+{% include "uiDesign.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <title>Stock Analysis</title>
+</head>
+<body>    
+  <h2 style="text-align:center; font-family:'Algerian'">Clean Data</h2>  
+  <form action="" method="post" enctype="multipart/form-data">
+  <div class="boxContainer">
+        {% csrf_token %}     
+        <div id="cleaning_data_div" class="cleaning_data_div">
+          <label for="choose_csv"><b>Upload file:</b></label><br>
+          <input type="file" name="choose_csv" id="choose_csv" class="choose_csv" accept=".csv" required>          
+          <input type="submit" name="clean_data" id="clean_data" class="btn" value="Clean Data"><br>  
+        
+        {% csrf_token %}        
+            <h4>Removed Null values.... {{cleanMessage}} <br><h2>
+              {% block messages %}
+              {% if messages %}  
+                {% for message in messages %}
+                  {{message}}
+                {% endfor %}
+              {% endif %}  
+            {% endblock %}
+            </h2>  </h4><br> 
+          </div>  
+</div>
+    </form>
+      {% load static %}
+      <!-- <link rel="stylesheet" href="/static/css/style.css?{% now "U" %}"/>  -->
+      
+      <script type="module" src={% static "/javascript/script.js" %}>
+      </script>
+</body>
+</html>

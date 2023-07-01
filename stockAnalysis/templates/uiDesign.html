@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <title>Stock Analysis</title>
+</head>
+<body>
+    <!-- <div class="loader" id="loader">
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+        <div class="box box4"></div>
+    </div>     -->
+    <nav> 
+        <div class="logo">Data Analysis Stock market</div>
+        <ul>
+            <li><a href = "{% url 'index' %}">Clean Data</a> </li>
+            <li>
+                <a href="#">Features</a>
+            <ul>
+                <li><a href = "{% url 'graphPage' %}">Plot Graph</a></li>
+                <li><a href = "{% url 'TableRows' %}">Show Table</a></li>
+                <li><a href = "{% url 'AnalyzeData' %}">Analyze Data</a></li>
+            </ul>
+            </li>
+            <li>
+                <a href = "{% url 'graphPage' %}">Plot Graph</a>
+            <ul>
+                <li><a href = "#">Plot Graph</a></li>
+                <li><a href="#">Settings</a></li>
+                <li>
+                    <a href="#">More
+                        <span>+</span></a>
+                <ul>
+                    <li><a href = "{% url 'graphPage' %}">Plot Graph</a></li>
+                    <li><a href = "{% url 'TableRows' %}">Show Table</a></li>
+                    <li><a href = "{% url 'AnalyzeData' %}">Analyze Data</a></li>
+                </ul>
+            </li>
+            </ul>
+            </li>
+            <li><a href = "{% url 'TableRows' %}">Show Table</a></li>
+            <li><a href = "{% url 'AnalyzeData' %}">Analyze Data</a></li>
+        </ul>
+    </nav>
+</body>
+<script>
+    var preloader = document.getElementById('loader');
+    function loading(){
+        preloader.style.display='none';
+    }
+</script>
+</html>

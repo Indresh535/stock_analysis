@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\..\\..\\.."
+		},
+		{
+			"name": "waterlevel",
+			"path": "..\\..\\..\\..\\..\\..\\..\\..\\Users\\Dell\\OneDrive\\Documents\\PlatformIO\\Projects\\waterlevel"
+		},
+		{
+			"name": "esp32_ledblink",
+			"path": "..\\..\\..\\..\\..\\..\\..\\..\\Users\\Dell\\OneDrive\\Documents\\PlatformIO\\Projects\\esp32_ledblink"
+		},
+		{
+			"name": "water",
+			"path": "..\\..\\..\\..\\..\\..\\..\\..\\Users\\Dell\\OneDrive\\Documents\\PlatformIO\\Projects\\water"
+		}
+	],
+	"settings": {}
+}

@@ -1,0 +1,68 @@
+{% load static %} {% include "uiDesign.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <title>Plot Graph</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h2 style="text-align:center; font-family:'Algerian">Plot Graph</h2>
+    <form action="" method="post" enctype="multipart/form-data">
+      <div class="boxContainer">
+        {% csrf_token %}
+        <div id="cleaning_data_div" class="cleaning_data_div">
+          <label for="choose_csv"><b style="font-size: x-large">Upload file:</b></label><br />
+          <input type="file" name="choose_csv"  id="choose_csv" class="choose_csv" accept=".csv" required><br/><br><br>
+          <label for="column_id">Specify the Attriute:</label><br>
+          <input type="text" name="column_id" id="column_id" class="textbox" required /><br />
+          <input type="submit" name="plot" id="plot" class="btn" value="Plot Graph" />
+        </div>
+        <div class="graph">
+        <canvas id="pie-chart"></canvas>
+        </div>
+      </div>
+    </form>
+  </body>
+  <h2>
+    {% block messages %} {% if messages %} {% for message in messages %}
+    {{message}} {% endfor %} {% endif %} {% endblock %}
+  </h2>
+  <br />
+  
+  {% block body %}
+  <script>
+        var myColorArray = [
+        'rgba(255, 162, 0, 0.8)','rgba(76, 166, 246, 0.8)','rgba(237, 14, 26, 0.8)','rgba(237, 14, 230, 0.8)','rgba(14, 237, 225, 0.8)',
+        'rgba(7, 240, 228, 0.29)','rgba(240, 7, 53, 0.29)','#5e8d63rgba(240, 7, 199, 0.29)','rgba(7, 240, 68, 0.29)','rgba(10, 7, 240, 0.29)',
+        'rgba(8, 5, 237, 0.2)','rgba(5, 237, 70, 0.2)','rgba(237, 5, 133, 0.2)','rgba(237, 61, 5, 0.2)','rgba(237, 234, 5, 0.2)',
+        'rgba(237, 162, 5, 0.2)','rgba(128, 237, 5, 0.2)','rgba(5, 237, 17, 0.2)','rgba(5, 123, 237, 0.2)','rgba(90, 5, 237, 0.2)',
+        'rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 206, 86, 0.2)','rgba(75, 192, 192, 0.2)','rgba(153, 102, 255, 0.2)',
+        'rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)','rgba(255, 159, 64, 1)','rgba(255, 159, 64, 0.2)'];
+
+        document.getElementById("pie-chart").style["border"] = "2px solid black";
+
+
+    new Chart(document.getElementById("pie-chart"),{
+            type: 'bar',
+            data: {
+                labels: {{listkeys|safe}},
+                datasets: [{
+                    label: "",
+                    backgroundColor: myColorArray,
+                    data: {{listvalues|safe}} ,
+                }]
+            },
+            options: {
+                title: {
+                    display:true,
+                    text: 'Indian Stock Analysis'
+                }
+            }
+          });
+  </script>
+  {% endblock %}
+</html>

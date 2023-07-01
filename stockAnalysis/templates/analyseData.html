@@ -1,0 +1,165 @@
+{% load static %}
+{% include "uiDesign.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <title>Analyze Data</title>
+</head>
+<body>    
+    <h2 style="text-align:center; font-family:'Algerian'">Analyze Data</h2>
+    <div class="boxContainer" style="height: 80vh;">
+     <input type="file" name="uploadfile" id="uploadfile" class="choose_csv" accept=".csv">
+      <button id="uploadconfirm" class="btn" onclick="alert('Uploaded Sucessfully')">Upload File</button>
+      <div class="chartBox">
+        <canvas id="myChart"></canvas>
+      </div>
+      <div class="allbuttons">
+        <div class="singlebtn">
+        <button onclick="updateChart('dateData')">Show Date</button>
+        </div>
+        <div class="singlebtn">
+        <button onclick="updateChart('openData')">Show Open</button>
+        </div>
+        <div class="singlebtn">
+        <button onclick="updateChart('highData')">Show High</button>
+        </div>
+        <div class="singlebtn">
+        <button onclick="updateChart('lowData')">Show Low</button>
+        </div>
+        <div class="singlebtn">
+        <button onclick="updateChart('closeData')">Show Close</button>
+        </div>
+        <div class="singlebtn">
+        <button onclick="updateChart('volumeData')">Show Volume</button>
+        </div>
+        <div class="singlebtn">
+        <button onclick="updateChart('turnoverData')">Show TurnOver</button>
+        </div>
+      </div>
+  </div>
+</body>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.1/papaparse.min.js"></script>
+<script>
+
+// setup
+const data = {
+labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+datasets: [{
+    label: '# of Votes',
+    data: [12, 19, 3, 5, 2, 3],
+    backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+    ],
+    borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+    ],
+    borderWidth: 1
+}]
+};
+// config
+const config = {
+type: 'line',
+  data,
+  options: {
+      scales: {
+          y: {
+              beginAtZero: true
+          }
+      }
+  }
+};
+
+// render init
+const mychart=new Chart(
+document.getElementById('myChart'),
+config
+);
+
+// Papa Parse Js
+const dateData = [];
+const openData = [];
+const highData = [];
+const lowData = [];
+const closeData = [];
+const volumeData = [];
+const turnoverData = [];
+const newlabels = [];
+
+const uploadconfirm=document.getElementById('uploadconfirm').addEventListener('click',()=>{
+Papa.parse(document.getElementById('uploadfile').files[0],
+{
+  download: true,
+  header: true,
+  skipEmptyLines: true,
+  complete: function(results){
+    // console.log(results)
+  //  console.log('length',results.data.length); to calculate the number of rows
+  // for(i=0;i<results.data.length;i++)
+    for(i=0;i<50;i++){
+      dateData.push(results.data[i].Date)
+      openData.push(results.data[i].Open)
+      highData.push(results.data[i].High)
+      lowData.push(results.data[i].Low)
+      closeData.push(results.data[i].Close)
+      volumeData.push(results.data[i].Volume)
+      turnoverData.push(results.data[i].Turnover)
+
+      newlabels.push(results.data[i].Volume)
+    }
+    // console.log(volumeData);     shows the complete data in the volume row
+    console.log(dateData);
+    console.log(openData);
+    console.log(highData);
+    console.log(lowData);
+    console.log(closeData);
+    console.log(volumeData);
+    console.log(turnoverData);
+  }
+});
+});
+
+
+function updateChart(label){
+mychart.data.labels=newlabels;
+mychart.data.datasets[0].label=label;
+if(label === 'dateData'){
+  mychart.data.datasets[0].data = dateData;
+  }
+if(label === 'openData'){
+  mychart.data.datasets[0].data = openData;
+  }
+if(label === 'highData'){
+  mychart.data.datasets[0].data = highData;
+  }
+if(label === 'closeData'){
+  mychart.data.datasets[0].data = closeData;
+  }
+if(label === 'volumeData'){
+  mychart.data.datasets[0].data = volumeData;
+  }
+  if(label === 'turnoverData'){
+  mychart.data.datasets[0].data = turnoverData;
+  }
+
+  
+  console.log(label);
+  mychart.update();
+};
+</script>
+</html>
